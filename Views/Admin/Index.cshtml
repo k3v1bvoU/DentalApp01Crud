@@ -1,0 +1,38 @@
+﻿@model dentalApp02.Controllers.AdminViewModel
+
+<h1>Manage Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Confirmed</th>
+            <th>Current Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.EmailConfirmed</td>
+                <td>@Model.UserRoles[user.Id]</td>
+                <td>
+                    @if (!user.EmailConfirmed)
+                    {
+                        <a asp-action="ConfirmEmail" asp-route-userId="@user.Id" class="btn btn-primary">Confirm Email</a>
+                    }
+                    <form asp-action="ChangeRole" method="post" style="display:inline">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <select name="newRole" class="form-control" style="display:inline;width:auto">
+                            <option value="Client" selected>Client</option>
+                            <option value="Technician">Technician</option>
+                            <option value="Admin">Administrator</option>
+                        </select>
+                        <button type="submit" class="btn btn-secondary">Change Role</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+@model dentalApp02.Models.TareaHistorial
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TareaHistorial</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HistorialId" />
+            <div class="form-group">
+                <label asp-for="TareaId" class="control-label"></label>
+                <select asp-for="TareaId" class="form-control" asp-items="ViewBag.TareaId"></select>
+                <span asp-validation-for="TareaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifiedByUserId" class="control-label"></label>
+                <input asp-for="ModifiedByUserId" class="form-control" />
+                <span asp-validation-for="ModifiedByUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaModificacion" class="control-label"></label>
+                <input asp-for="FechaModificacion" class="form-control" />
+                <span asp-validation-for="FechaModificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

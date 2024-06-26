@@ -1,0 +1,95 @@
+@model dentalApp02.Models.CreatePedidoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Pedido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Cliente Fields -->
+            <h5>Cliente</h5>
+            <div class="form-group">
+                <label asp-for="ClienteNombre" class="control-label"></label>
+                <input asp-for="ClienteNombre" class="form-control" />
+                <span asp-validation-for="ClienteNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClienteDireccion" class="control-label"></label>
+                <input asp-for="ClienteDireccion" class="form-control" />
+                <span asp-validation-for="ClienteDireccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClienteTelefono" class="control-label"></label>
+                <input asp-for="ClienteTelefono" class="form-control" />
+                <span asp-validation-for="ClienteTelefono" class="text-danger"></span>
+            </div>
+
+            <!-- Pedido Fields -->
+            <h5>Pedido</h5>
+            <div class="form-group">
+                <label asp-for="PedidoFecha" class="control-label"></label>
+                <input asp-for="PedidoFecha" class="form-control" />
+                <span asp-validation-for="PedidoFecha" class="text-danger"></span>
+            </div>
+
+            <!-- Protesis Fields -->
+            <h5>Protesis</h5>
+            <div class="form-group">
+                <label asp-for="ProtesisNombre" class="control-label"></label>
+                <input asp-for="ProtesisNombre" class="form-control" />
+                <span asp-validation-for="ProtesisNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProtesisModelo3D" class="control-label"></label>
+                <input asp-for="ProtesisModelo3D" class="form-control" id="modelo3d-input" />
+                <span asp-validation-for="ProtesisModelo3D" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="esModelo3DCheckbox">
+                <label class="form-check-label" for="esModelo3DCheckbox">Es modelo 3D</label>
+            </div>
+
+            <!-- Transaccion Fields -->
+            <h5>Transaccion</h5>
+            <div class="form-group">
+                <label asp-for="TransaccionMonto" class="control-label"></label>
+                <input asp-for="TransaccionMonto" class="form-control" />
+                <span asp-validation-for="TransaccionMonto" class="text-danger"></span>
+            </div>
+
+            <!-- Tarea Fields -->
+            <h5>Tarea</h5>
+            <div class="form-group">
+                <label asp-for="TareaDescripcion" class="control-label"></label>
+                <input asp-for="TareaDescripcion" class="form-control" />
+                <span asp-validation-for="TareaDescripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $(document).ready(function () {
+            $("#esModelo3DCheckbox").change(function () {
+                if (this.checked) {
+                    $("#modelo3d-input").show();
+                } else {
+                    $("#modelo3d-input").hide();
+                }
+            }).change();
+        });
+    </script>
+}
